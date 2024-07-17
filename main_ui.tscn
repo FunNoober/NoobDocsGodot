@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cmg5wr6ocap4s"]
+[gd_scene load_steps=6 format=3 uid="uid://cmg5wr6ocap4s"]
 
 [ext_resource type="Theme" uid="uid://chaavt4sj5lex" path="res://assets/themes/main_ui.tres" id="1_76pn1"]
 [ext_resource type="Script" path="res://main_ui.gd" id="2_15v6i"]
 [ext_resource type="Script" path="res://assets/prefab/MargainExpander.gd" id="3_ek45p"]
+[ext_resource type="Script" path="res://assets/ConfirmDeleteDialog.gd" id="4_3vxcl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yx68k"]
 font_size = 36
@@ -55,4 +56,12 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 
+[node name="ConfirmDeleteDialog" type="ConfirmationDialog" parent="."]
+initial_position = 1
+size = Vector2i(250, 110)
+dialog_text = "Are you sure you want to delete this document. This can not be undone!"
+dialog_autowrap = true
+script = ExtResource("4_3vxcl")
+
 [connection signal="pressed" from="UiMargain/MainContainer/TopBar/CreateButton" to="." method="_on_create_button_pressed"]
+[connection signal="confirmed" from="ConfirmDeleteDialog" to="." method="_on_confirm_delete_dialog_confirmed"]

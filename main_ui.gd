@@ -2,6 +2,7 @@ extends Control
 
 @onready var document_card : PackedScene = load("res://assets/prefab/document_card.tscn")
 @onready var contents : Control = $UiMargain/MainContainer/ContentsScroll/Contents
+@onready var confirm_delete_dialog : ConfirmDeleteDialog = $ConfirmDeleteDialog
 
 var documents = {}
 
@@ -42,7 +43,15 @@ func create_document_card(save_new : bool, title : String, document_hash : Strin
 func open_document(document_id : String):
 	SceneManager.load_document(document_id)
 	
-func delete_document(document_id : String):
-	documents.erase(document_id)
+func delete_document(document_id : String, card_path : String):
+	confirm_delete_dialog.popup()
+	confirm_delete_dialog.document_id = document_id
+	confirm_delete_dialog.documents = documents
+	confirm_delete_dialog.save = save
+	confirm_delete_dialog.card_path = card_path
+
+func _on_confirm_delete_dialog_confirmed():
+	documents.erase(confirm_delete_dialog.document_id)
 	save.set_value("save", "documents", documents)
 	save.save("noobsdoc.ini")
+	get_node(confirm_delete_dialog.card_path).queue_free()

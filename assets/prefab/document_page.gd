@@ -11,7 +11,14 @@ func _ready():
 	label.markdown_text = SceneManager.current_document_contents
 	title.text = SceneManager.current_document_title
 
+func _process(delta):
+	if Input.is_action_pressed("modifier") and Input.is_action_just_pressed("s"):
+		save_file()
+
 func _on_save_button_pressed():
+	save_file()
+
+func save_file():
 	SceneManager.documents[SceneManager.current_document_id].title = title.text
 	SceneManager.documents[SceneManager.current_document_id].contents = editor.text
 	SceneManager.save_documents()

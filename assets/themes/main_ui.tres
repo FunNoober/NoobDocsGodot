@@ -1,6 +1,14 @@
-[gd_resource type="Theme" load_steps=10 format=3 uid="uid://chaavt4sj5lex"]
+[gd_resource type="Theme" load_steps=12 format=3 uid="uid://chaavt4sj5lex"]
 
 [ext_resource type="FontFile" uid="uid://d12xc0xnhx70j" path="res://assets/fonts/Roboto-Regular.ttf" id="1_3laay"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q517k"]
+bg_color = Color(0.109804, 0.129412, 0.172549, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.109804, 0.129412, 0.172549, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mwr55"]
 bg_color = Color(0.458824, 0.25098, 0.74902, 1)
@@ -89,9 +97,21 @@ corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r0y6x"]
+bg_color = Color(0.164706, 0.192157, 0.25098, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_left = 3.0
+expand_margin_top = 35.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+
 [resource]
 default_font = ExtResource("1_3laay")
 default_font_size = 16
+AcceptDialog/styles/panel = SubResource("StyleBoxFlat_q517k")
 Button/colors/font_color = Color(1, 1, 1, 1)
 Button/styles/hover = SubResource("StyleBoxFlat_mwr55")
 Button/styles/normal = SubResource("StyleBoxFlat_1qybw")
@@ -102,3 +122,4 @@ LineEdit/styles/normal = SubResource("StyleBoxFlat_sfc23")
 PopupMenu/styles/panel = SubResource("StyleBoxFlat_p4ehb")
 TextEdit/styles/focus = SubResource("StyleBoxFlat_ukde7")
 TextEdit/styles/normal = SubResource("StyleBoxFlat_vaqvt")
+Window/styles/embedded_border = SubResource("StyleBoxFlat_r0y6x")
