@@ -1,0 +1,161 @@
+[gd_scene load_steps=17 format=3 uid="uid://bbq5t84qphyk3"]
+
+[ext_resource type="Theme" uid="uid://chaavt4sj5lex" path="res://assets/themes/main_ui.tres" id="1_eeuxg"]
+[ext_resource type="Script" path="res://addons/markdownlabel/markdownlabel.gd" id="2_k71dw"]
+[ext_resource type="Script" path="res://assets/prefab/document_page.gd" id="2_kdu7k"]
+[ext_resource type="Script" path="res://assets/prefab/MargainExpander.gd" id="3_bvjxs"]
+[ext_resource type="Script" path="res://addons/markdownlabel/header_formats/h1_format.gd" id="3_t6wkr"]
+[ext_resource type="Script" path="res://addons/markdownlabel/header_formats/h2_format.gd" id="4_wehlw"]
+[ext_resource type="Script" path="res://addons/markdownlabel/header_formats/h3_format.gd" id="5_du4c6"]
+[ext_resource type="Script" path="res://addons/markdownlabel/header_formats/h4_format.gd" id="6_l0dgv"]
+[ext_resource type="Script" path="res://addons/markdownlabel/header_formats/h5_format.gd" id="7_mmilk"]
+[ext_resource type="Script" path="res://addons/markdownlabel/header_formats/h6_format.gd" id="8_0qgpt"]
+
+[sub_resource type="Resource" id="Resource_6v724"]
+resource_local_to_scene = true
+script = ExtResource("3_t6wkr")
+font_size = 2.285
+is_bold = false
+is_italic = false
+is_underlined = false
+override_font_color = false
+font_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Resource" id="Resource_iq0o3"]
+resource_local_to_scene = true
+script = ExtResource("4_wehlw")
+font_size = 1.714
+is_bold = false
+is_italic = false
+is_underlined = false
+override_font_color = false
+font_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Resource" id="Resource_ye7cl"]
+resource_local_to_scene = true
+script = ExtResource("5_du4c6")
+font_size = 1.428
+is_bold = false
+is_italic = false
+is_underlined = false
+override_font_color = false
+font_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Resource" id="Resource_roe5p"]
+resource_local_to_scene = true
+script = ExtResource("6_l0dgv")
+font_size = 1.142
+is_bold = false
+is_italic = false
+is_underlined = false
+override_font_color = false
+font_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Resource" id="Resource_r8r10"]
+resource_local_to_scene = true
+script = ExtResource("7_mmilk")
+font_size = 1.0
+is_bold = false
+is_italic = false
+is_underlined = false
+override_font_color = false
+font_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Resource" id="Resource_6mqfx"]
+resource_local_to_scene = true
+script = ExtResource("8_0qgpt")
+font_size = 0.857
+is_bold = false
+is_italic = false
+is_underlined = false
+override_font_color = false
+font_color = Color(1, 1, 1, 1)
+
+[node name="document_page" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_eeuxg")
+script = ExtResource("2_kdu7k")
+
+[node name="DocumentMargain" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 75
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 75
+theme_override_constants/margin_bottom = 25
+script = ExtResource("3_bvjxs")
+
+[node name="MainContainer" type="VBoxContainer" parent="DocumentMargain"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="TopBar" type="HBoxContainer" parent="DocumentMargain/MainContainer"]
+layout_mode = 2
+
+[node name="HomeButton" type="Button" parent="DocumentMargain/MainContainer/TopBar"]
+layout_mode = 2
+text = "Home"
+
+[node name="DocumentName" type="LineEdit" parent="DocumentMargain/MainContainer/TopBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SaveButton" type="Button" parent="DocumentMargain/MainContainer/TopBar"]
+layout_mode = 2
+text = "Save"
+
+[node name="ViewSwitcher" type="HBoxContainer" parent="DocumentMargain/MainContainer"]
+layout_mode = 2
+
+[node name="MenuButton" type="OptionButton" parent="DocumentMargain/MainContainer/ViewSwitcher"]
+layout_mode = 2
+size_flags_horizontal = 3
+item_count = 3
+selected = 2
+popup/item_0/text = "Edit"
+popup/item_0/id = 0
+popup/item_1/text = "View"
+popup/item_1/id = 1
+popup/item_2/text = "Split"
+popup/item_2/id = 2
+
+[node name="EditorScroll" type="ScrollContainer" parent="DocumentMargain/MainContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="EditorViewer" type="HSplitContainer" parent="DocumentMargain/MainContainer/EditorScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="Editor" type="TextEdit" parent="DocumentMargain/MainContainer/EditorScroll/EditorViewer"]
+layout_mode = 2
+size_flags_horizontal = 3
+wrap_mode = 1
+
+[node name="MarkdownLabel" type="RichTextLabel" parent="DocumentMargain/MainContainer/EditorScroll/EditorViewer"]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+script = ExtResource("2_k71dw")
+h1 = SubResource("Resource_6v724")
+h2 = SubResource("Resource_iq0o3")
+h3 = SubResource("Resource_ye7cl")
+h4 = SubResource("Resource_roe5p")
+h5 = SubResource("Resource_r8r10")
+h6 = SubResource("Resource_6mqfx")
+
+[connection signal="pressed" from="DocumentMargain/MainContainer/TopBar/HomeButton" to="." method="_on_home_button_pressed"]
+[connection signal="pressed" from="DocumentMargain/MainContainer/TopBar/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="item_selected" from="DocumentMargain/MainContainer/ViewSwitcher/MenuButton" to="." method="_on_menu_button_item_selected"]
+[connection signal="text_changed" from="DocumentMargain/MainContainer/EditorScroll/EditorViewer/Editor" to="." method="_on_editor_text_changed"]

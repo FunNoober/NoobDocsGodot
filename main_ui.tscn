@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmg5wr6ocap4s"]
+
+[ext_resource type="Theme" uid="uid://chaavt4sj5lex" path="res://assets/themes/main_ui.tres" id="1_76pn1"]
+[ext_resource type="Script" path="res://main_ui.gd" id="2_15v6i"]
+[ext_resource type="Script" path="res://assets/prefab/MargainExpander.gd" id="3_ek45p"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yx68k"]
+font_size = 36
+
+[node name="MainUi" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_76pn1")
+script = ExtResource("2_15v6i")
+
+[node name="UiMargain" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 75
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 75
+theme_override_constants/margin_bottom = 25
+script = ExtResource("3_ek45p")
+
+[node name="MainContainer" type="VBoxContainer" parent="UiMargain"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="TopBar" type="HBoxContainer" parent="UiMargain/MainContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="UiMargain/MainContainer/TopBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "NoobDocs"
+label_settings = SubResource("LabelSettings_yx68k")
+
+[node name="CreateButton" type="Button" parent="UiMargain/MainContainer/TopBar"]
+layout_mode = 2
+text = "New"
+
+[node name="ContentsScroll" type="ScrollContainer" parent="UiMargain/MainContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Contents" type="VBoxContainer" parent="UiMargain/MainContainer/ContentsScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="pressed" from="UiMargain/MainContainer/TopBar/CreateButton" to="." method="_on_create_button_pressed"]
