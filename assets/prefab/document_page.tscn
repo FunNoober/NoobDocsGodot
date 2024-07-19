@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bbq5t84qphyk3"]
+[gd_scene load_steps=20 format=3 uid="uid://bbq5t84qphyk3"]
 
 [ext_resource type="Theme" uid="uid://chaavt4sj5lex" path="res://assets/themes/main_ui.tres" id="1_eeuxg"]
 [ext_resource type="Script" path="res://addons/markdownlabel/markdownlabel.gd" id="2_k71dw"]
@@ -70,6 +70,43 @@ is_italic = false
 is_underlined = false
 override_font_color = false
 font_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_6rw2m"]
+resource_name = "popup"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SavedPopup:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(2, -2, -2, 2),
+"update": 0,
+"values": [Vector2(0, 720), Vector2(0, 701), Vector2(0, 701), Vector2(0, 720)]
+}
+
+[sub_resource type="Animation" id="Animation_h1y41"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SavedPopup:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 720)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4abu3"]
+_data = {
+"RESET": SubResource("Animation_h1y41"),
+"popup": SubResource("Animation_6rw2m")
+}
 
 [node name="document_page" type="Control"]
 layout_mode = 3
@@ -154,6 +191,37 @@ h3 = SubResource("Resource_ye7cl")
 h4 = SubResource("Resource_roe5p")
 h5 = SubResource("Resource_r8r10")
 h6 = SubResource("Resource_6mqfx")
+
+[node name="SavedPopup" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ColorRect" type="ColorRect" parent="SavedPopup"]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.109804, 0.129412, 0.172549, 1)
+
+[node name="SavedLabel" type="Label" parent="SavedPopup/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Saved"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SavedPopupAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4abu3")
+}
 
 [connection signal="pressed" from="DocumentMargain/MainContainer/TopBar/HomeButton" to="." method="_on_home_button_pressed"]
 [connection signal="pressed" from="DocumentMargain/MainContainer/TopBar/SaveButton" to="." method="_on_save_button_pressed"]

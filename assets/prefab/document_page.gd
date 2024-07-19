@@ -22,6 +22,7 @@ func save_file():
 	SceneManager.documents[SceneManager.current_document_id].title = title.text
 	SceneManager.documents[SceneManager.current_document_id].contents = editor.text
 	SceneManager.save_documents()
+	$SavedPopupAnimation.play("popup")
 
 func _on_editor_text_changed():
 	label.markdown_text = editor.text
