@@ -1,6 +1,10 @@
-[gd_resource type="Theme" load_steps=12 format=3 uid="uid://chaavt4sj5lex"]
+[gd_resource type="Theme" load_steps=16 format=3 uid="uid://chaavt4sj5lex"]
 
 [ext_resource type="FontFile" uid="uid://d12xc0xnhx70j" path="res://assets/fonts/Roboto-Regular.ttf" id="1_3laay"]
+[ext_resource type="FontFile" uid="uid://dixvfy7uvdjup" path="res://assets/fonts/Roboto-Bold.ttf" id="1_fcplc"]
+[ext_resource type="FontFile" uid="uid://hgfg0xascxjs" path="res://assets/fonts/Roboto-BoldItalic.ttf" id="2_sqolg"]
+[ext_resource type="FontFile" uid="uid://bsgxgpq11ui8p" path="res://assets/fonts/Roboto-Italic.ttf" id="3_6lxnv"]
+[ext_resource type="FontFile" uid="uid://c5varwa6pwr0j" path="res://assets/fonts/CourierPrime-Regular.ttf" id="4_62uo0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q517k"]
 bg_color = Color(0.109804, 0.129412, 0.172549, 1)
@@ -110,7 +114,7 @@ expand_margin_bottom = 3.0
 
 [resource]
 default_font = ExtResource("1_3laay")
-default_font_size = 16
+default_font_size = 14
 AcceptDialog/styles/panel = SubResource("StyleBoxFlat_q517k")
 Button/colors/font_color = Color(1, 1, 1, 1)
 Button/styles/hover = SubResource("StyleBoxFlat_mwr55")
@@ -120,6 +124,10 @@ LineEdit/colors/font_color = Color(0.875, 0.875, 0.875, 1)
 LineEdit/styles/focus = SubResource("StyleBoxFlat_62mhy")
 LineEdit/styles/normal = SubResource("StyleBoxFlat_sfc23")
 PopupMenu/styles/panel = SubResource("StyleBoxFlat_p4ehb")
+RichTextLabel/fonts/bold_font = ExtResource("1_fcplc")
+RichTextLabel/fonts/bold_italics_font = ExtResource("2_sqolg")
+RichTextLabel/fonts/italics_font = ExtResource("3_6lxnv")
+RichTextLabel/fonts/mono_font = ExtResource("4_62uo0")
 TextEdit/styles/focus = SubResource("StyleBoxFlat_ukde7")
 TextEdit/styles/normal = SubResource("StyleBoxFlat_vaqvt")
 Window/styles/embedded_border = SubResource("StyleBoxFlat_r0y6x")

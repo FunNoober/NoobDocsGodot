@@ -10,3 +10,7 @@ Uses MarkdownLabel by daenvil to display the markdown on the screen. NoobDocs is
 - Editing existing documents
 - Deleting documents
 - Image Support (very finicky/unstable)
+
+## Credits:
+- Roboto (font)
+- Courier Prime (font)

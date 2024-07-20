@@ -31,6 +31,36 @@ window/stretch/aspect="expand"
 
 enabled=PackedStringArray("res://addons/markdownlabel/plugin.cfg")
 
+[importer_defaults]
+
+font_data_dynamic={
+"Compress": null,
+"Fallbacks": null,
+"Rendering": null,
+"allow_system_fallback": true,
+"antialiasing": 2,
+"compress": true,
+"fallbacks": [],
+"force_autohinter": false,
+"generate_mipmaps": false,
+"hinting": 0,
+"language_support": {},
+"msdf_pixel_range": 8,
+"msdf_size": 48,
+"multichannel_signed_distance_field": false,
+"opentype_features": {},
+"oversampling": 8.0,
+"preload": [{
+"chars": [],
+"glyphs": [],
+"name": "New Configuration",
+"size": Vector2i(16, 0),
+"variation_embolden": 0.0
+}],
+"script_support": {},
+"subpixel_positioning": 1
+}
+
 [input]
 
 left_click={

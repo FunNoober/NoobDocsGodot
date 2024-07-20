@@ -2,3 +2,4 @@
 *.import
 noobsdoc.ini
 noobdocs.json
+*_noobdocs.json

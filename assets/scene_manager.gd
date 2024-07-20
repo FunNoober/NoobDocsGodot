@@ -7,6 +7,8 @@ var current_document_title : String
 #var save = ConfigFile.new()
 var documents = {}
 
+@onready var theme : Theme = load("res://assets/themes/main_ui.tres")
+
 func _ready():
 	load_save()
 	

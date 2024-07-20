@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bbq5t84qphyk3"]
+[gd_scene load_steps=21 format=3 uid="uid://bbq5t84qphyk3"]
 
 [ext_resource type="Theme" uid="uid://chaavt4sj5lex" path="res://assets/themes/main_ui.tres" id="1_eeuxg"]
 [ext_resource type="Script" path="res://addons/markdownlabel/markdownlabel.gd" id="2_k71dw"]
@@ -10,6 +10,13 @@
 [ext_resource type="Script" path="res://addons/markdownlabel/header_formats/h4_format.gd" id="6_l0dgv"]
 [ext_resource type="Script" path="res://addons/markdownlabel/header_formats/h5_format.gd" id="7_mmilk"]
 [ext_resource type="Script" path="res://addons/markdownlabel/header_formats/h6_format.gd" id="8_0qgpt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ct1sf"]
+bg_color = Color(0.0941176, 0.109804, 0.145098, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
 [sub_resource type="Resource" id="Resource_6v724"]
 resource_local_to_scene = true
@@ -84,6 +91,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 720)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SavedPopup:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1280, 19)]
 }
 
 [sub_resource type="Animation" id="Animation_6rw2m"]
@@ -178,11 +197,13 @@ theme_override_constants/separation = 10
 [node name="Editor" type="TextEdit" parent="DocumentMargain/MainContainer/EditorScroll/EditorViewer"]
 layout_mode = 2
 size_flags_horizontal = 3
+placeholder_text = "Start typing..."
 wrap_mode = 1
 
 [node name="MarkdownLabel" type="RichTextLabel" parent="DocumentMargain/MainContainer/EditorScroll/EditorViewer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_ct1sf")
 bbcode_enabled = true
 script = ExtResource("2_k71dw")
 h1 = SubResource("Resource_6v724")
