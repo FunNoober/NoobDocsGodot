@@ -48,6 +48,10 @@ label_settings = SubResource("LabelSettings_yx68k")
 layout_mode = 2
 text = "New"
 
+[node name="BackupButton" type="Button" parent="UiMargain/MainContainer/TopBar"]
+layout_mode = 2
+text = "Backup"
+
 [node name="ContentsScroll" type="ScrollContainer" parent="UiMargain/MainContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -64,4 +68,5 @@ dialog_autowrap = true
 script = ExtResource("4_3vxcl")
 
 [connection signal="pressed" from="UiMargain/MainContainer/TopBar/CreateButton" to="." method="_on_create_button_pressed"]
+[connection signal="pressed" from="UiMargain/MainContainer/TopBar/BackupButton" to="." method="_on_backup_button_pressed"]
 [connection signal="confirmed" from="ConfirmDeleteDialog" to="." method="_on_confirm_delete_dialog_confirmed"]

@@ -4,24 +4,11 @@ extends Control
 @onready var contents : Control = $UiMargain/MainContainer/ContentsScroll/Contents
 @onready var confirm_delete_dialog : ConfirmDeleteDialog = $ConfirmDeleteDialog
 
-var documents = {}
-
-var save = ConfigFile.new()
-
 func _ready():
-	load_save()
+	SceneManager.load_save()
 	
-	for document_key in documents:
-		create_document_card(false, documents[document_key].title, documents[document_key].hash)
-	
-func load_save():
-	var err = save.load("noobsdoc.ini")
-	if err == 7:
-		save.save("noobsdoc.ini")
-		load_save()
-	if err != OK:
-		return
-	documents = save.get_value("save", "documents", {})
+	for document_key in SceneManager.documents:
+		create_document_card(false, SceneManager.documents[document_key].title, SceneManager.documents[document_key].hash)
 
 func _on_create_button_pressed():
 	create_document_card(true, "New Document", "")
@@ -36,9 +23,8 @@ func create_document_card(save_new : bool, title : String, document_hash : Strin
 	new_document_card.connect("DeleteDocument", delete_document)
 	if save_new == false:
 		return
-	documents[document_hash] = {"title": title, "contents": "", "hash": document_hash}
-	save.set_value("save", "documents", documents)
-	save.save("noobsdoc.ini")
+	SceneManager.documents[document_hash] = {"title": title, "contents": "", "hash": document_hash}
+	SceneManager.save_documents()
 
 func open_document(document_id : String):
 	SceneManager.load_document(document_id)
@@ -46,12 +32,15 @@ func open_document(document_id : String):
 func delete_document(document_id : String, card_path : String):
 	confirm_delete_dialog.popup()
 	confirm_delete_dialog.document_id = document_id
-	confirm_delete_dialog.documents = documents
-	confirm_delete_dialog.save = save
+	confirm_delete_dialog.documents = SceneManager.documents
 	confirm_delete_dialog.card_path = card_path
 
 func _on_confirm_delete_dialog_confirmed():
-	documents.erase(confirm_delete_dialog.document_id)
-	save.set_value("save", "documents", documents)
-	save.save("noobsdoc.ini")
+	SceneManager.documents.erase(confirm_delete_dialog.document_id)
+	SceneManager.save_documents()
 	get_node(confirm_delete_dialog.card_path).queue_free()
+
+func _on_backup_button_pressed():
+	if FileAccess.file_exists("noobdocs.json"):
+		DirAccess.copy_absolute("noobdocs.json", "backup_" + str(Time.get_unix_time_from_system()) + "_noobdocs.json")
+	
