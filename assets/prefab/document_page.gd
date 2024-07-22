@@ -10,6 +10,7 @@ func _ready():
 	editor.text = SceneManager.current_document_contents
 	label.markdown_text = SceneManager.current_document_contents
 	title.text = SceneManager.current_document_title
+	$DocumentMargain/MainContainer/TopBar/TimeOfModification.text = SceneManager.documents[SceneManager.current_document_id].time_of_modification
 
 func _process(delta):
 	if Input.is_action_pressed("modifier") and Input.is_action_just_pressed("s"):
@@ -21,8 +22,10 @@ func _on_save_button_pressed():
 func save_file():
 	SceneManager.documents[SceneManager.current_document_id].title = title.text
 	SceneManager.documents[SceneManager.current_document_id].contents = editor.text
+	SceneManager.documents[SceneManager.current_document_id].time_of_modification = SceneManager.get_formatted_time_from_system()
 	SceneManager.save_documents()
 	$SavedPopupAnimation.play("popup")
+	$DocumentMargain/MainContainer/TopBar/TimeOfModification.text = SceneManager.documents[SceneManager.current_document_id].time_of_modification
 
 func _on_editor_text_changed():
 	label.markdown_text = editor.text

@@ -23,8 +23,9 @@ func create_document_card(save_new : bool, title : String, document_hash : Strin
 	new_document_card.connect("DeleteDocument", delete_document)
 	if save_new == false:
 		return
-	SceneManager.documents[document_hash] = {"title": title, "contents": "", "hash": document_hash}
+	SceneManager.documents[document_hash] = {"title": title, "contents": "", "hash": document_hash, "time_of_modification": SceneManager.get_formatted_time_from_system()}
 	SceneManager.save_documents()
+	open_document(document_hash)
 
 func open_document(document_id : String):
 	SceneManager.load_document(document_id)

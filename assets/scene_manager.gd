@@ -4,7 +4,6 @@ var current_document_id : String
 var current_document_contents : String
 var current_document_title : String
 
-#var save = ConfigFile.new()
 var documents = {}
 
 @onready var theme : Theme = load("res://assets/themes/main_ui.tres")
@@ -28,14 +27,6 @@ func load_document(document_id : String):
 	get_tree().change_scene_to_file("res://assets/prefab/document_page.tscn")
 
 func load_save():
-	#var err = save.load("noobsdoc.ini")
-	#if err == 7:
-		#save.save("noobsdoc.ini")
-		#load_save()
-	#if err != OK:
-		#return
-	#documents = save.get_value("save", "documents", {})
-	
 	if not FileAccess.file_exists("noobdocs.json"):
 		return
 	var file_access = FileAccess.open("noobdocs.json", FileAccess.READ)
@@ -48,8 +39,6 @@ func load_save():
 	documents = json.data
 
 func save_documents():
-	#save.set_value("save", "documents", documents)
-	#save.save("noobsdoc.ini")
 	var json_string = JSON.stringify(documents)
 	var file_access = FileAccess.open("noobdocs.json", FileAccess.WRITE)
 	if not file_access:
@@ -57,3 +46,14 @@ func save_documents():
 	
 	file_access.store_line(json_string)
 	file_access.close()
+
+func get_formatted_time_from_system():
+	var time_dict = Time.get_datetime_dict_from_system()
+	var year = str(time_dict.year)
+	var month = str(time_dict.month)
+	var day = str(time_dict.day)
+	var hour = str(time_dict.hour)
+	var minute = str(time_dict.minute)
+	var second = str(time_dict.second)
+	
+	return year + "-" + month + "-" + day + " " + hour + "-" + minute + "-" + second
