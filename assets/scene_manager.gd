@@ -27,9 +27,9 @@ func load_document(document_id : String):
 	get_tree().change_scene_to_file("res://assets/prefab/document_page.tscn")
 
 func load_save():
-	if not FileAccess.file_exists("noobdocs.json"):
+	if not FileAccess.file_exists("user://noobdocs.json"):
 		return
-	var file_access = FileAccess.open("noobdocs.json", FileAccess.READ)
+	var file_access = FileAccess.open("user://noobdocs.json", FileAccess.READ)
 	var json_string = file_access.get_line()
 	file_access.close()
 	var json = JSON.new()
@@ -40,7 +40,7 @@ func load_save():
 
 func save_documents():
 	var json_string = JSON.stringify(documents)
-	var file_access = FileAccess.open("noobdocs.json", FileAccess.WRITE)
+	var file_access = FileAccess.open("user://noobdocs.json", FileAccess.WRITE)
 	if not file_access:
 		return
 	

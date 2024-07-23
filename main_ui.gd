@@ -42,6 +42,10 @@ func _on_confirm_delete_dialog_confirmed():
 	get_node(confirm_delete_dialog.card_path).queue_free()
 
 func _on_backup_button_pressed():
-	if FileAccess.file_exists("noobdocs.json"):
-		DirAccess.copy_absolute("noobdocs.json", "backup_" + str(Time.get_unix_time_from_system()) + "_noobdocs.json")
+	if FileAccess.file_exists("user://noobdocs.json"):
+		DirAccess.copy_absolute("user://noobdocs.json", "backup_" + str(Time.get_unix_time_from_system()) + "_noobdocs.json")
 	
+
+func _on_delete_databasebutton_pressed():
+	$ConfirmDatabaseDeletion.show_confirmation()
+

@@ -159,14 +159,32 @@ layout_mode = 2
 
 [node name="HomeButton" type="Button" parent="DocumentMargain/MainContainer/TopBar"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../../EditorScroll/EditorViewer/Editor")
+focus_neighbor_top = NodePath("../../EditorScroll/EditorViewer/Editor")
+focus_neighbor_right = NodePath("../SaveButton")
+focus_neighbor_bottom = NodePath("../../ViewSwitcher/MenuButton")
+focus_next = NodePath("../DocumentName")
+focus_previous = NodePath("../../EditorScroll/EditorViewer/Editor")
 text = "Home"
 
 [node name="DocumentName" type="LineEdit" parent="DocumentMargain/MainContainer/TopBar"]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../HomeButton")
+focus_neighbor_top = NodePath("../../EditorScroll/EditorViewer/Editor")
+focus_neighbor_right = NodePath("../SaveButton")
+focus_neighbor_bottom = NodePath("../../ViewSwitcher/MenuButton")
+focus_next = NodePath("../SaveButton")
+focus_previous = NodePath("../HomeButton")
 
 [node name="SaveButton" type="Button" parent="DocumentMargain/MainContainer/TopBar"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../DocumentName")
+focus_neighbor_top = NodePath("../../EditorScroll/EditorViewer/Editor")
+focus_neighbor_right = NodePath("../../ViewSwitcher/MenuButton")
+focus_neighbor_bottom = NodePath("../../ViewSwitcher/MenuButton")
+focus_next = NodePath("../../ViewSwitcher/MenuButton")
+focus_previous = NodePath("../DocumentName")
 text = "Save"
 
 [node name="TimeOfModification" type="Label" parent="DocumentMargain/MainContainer/TopBar"]
@@ -180,6 +198,12 @@ layout_mode = 2
 [node name="MenuButton" type="OptionButton" parent="DocumentMargain/MainContainer/ViewSwitcher"]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../../TopBar/SaveButton")
+focus_neighbor_top = NodePath("../../TopBar/SaveButton")
+focus_neighbor_right = NodePath("../../EditorScroll/EditorViewer/Editor")
+focus_neighbor_bottom = NodePath("../../EditorScroll/EditorViewer/Editor")
+focus_next = NodePath("../../EditorScroll/EditorViewer/Editor")
+focus_previous = NodePath("../../TopBar/SaveButton")
 item_count = 3
 selected = 2
 popup/item_0/text = "Edit"
@@ -202,6 +226,12 @@ theme_override_constants/separation = 10
 [node name="Editor" type="TextEdit" parent="DocumentMargain/MainContainer/EditorScroll/EditorViewer"]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../../../ViewSwitcher/MenuButton")
+focus_neighbor_top = NodePath("../../../ViewSwitcher/MenuButton")
+focus_neighbor_right = NodePath("../../../TopBar/HomeButton")
+focus_neighbor_bottom = NodePath("../../../TopBar/HomeButton")
+focus_next = NodePath("../../../TopBar/HomeButton")
+focus_previous = NodePath("../../../ViewSwitcher/MenuButton")
 placeholder_text = "Start typing..."
 wrap_mode = 1
 
