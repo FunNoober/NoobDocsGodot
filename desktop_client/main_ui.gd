@@ -6,7 +6,6 @@ extends Control
 
 func _ready():
 	SceneManager.load_save()
-	
 	for document_key in SceneManager.documents:
 		create_document_card(false, SceneManager.documents[document_key].title, SceneManager.documents[document_key].hash)
 	
@@ -45,7 +44,7 @@ func _on_confirm_delete_dialog_confirmed():
 
 func _on_backup_button_pressed():
 	if FileAccess.file_exists("user://noobdocs.json"):
-		DirAccess.copy_absolute("user://noobdocs.json", "backup_" + str(Time.get_unix_time_from_system()) + "_noobdocs.json")
+		DirAccess.copy_absolute("user://noobdocs.json", "user://backup_" + str(Time.get_unix_time_from_system()) + "_noobdocs.json")
 	
 
 func _on_delete_databasebutton_pressed():
@@ -61,3 +60,6 @@ func _on_search_bar_text_changed(new_text):
 	for document_key in SceneManager.documents:
 		if SceneManager.documents[document_key].title.findn(new_text) != -1:
 			create_document_card(false, SceneManager.documents[document_key].title, SceneManager.documents[document_key].hash)
+
+func _on_sync_options_button_pressed():
+	$SyncOptionsWindow.show()
