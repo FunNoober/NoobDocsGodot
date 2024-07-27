@@ -9,6 +9,8 @@ func _ready():
 	
 	for document_key in SceneManager.documents:
 		create_document_card(false, SceneManager.documents[document_key].title, SceneManager.documents[document_key].hash)
+	
+	$UiMargain/MainContainer/SearchBar.grab_focus()
 
 func _on_create_button_pressed():
 	create_document_card(true, "New Document", "")
@@ -49,3 +51,13 @@ func _on_backup_button_pressed():
 func _on_delete_databasebutton_pressed():
 	$ConfirmDatabaseDeletion.show_confirmation()
 
+func _on_search_bar_text_changed(new_text):
+	for child in contents.get_children():
+		child.queue_free()
+	if new_text.is_empty():
+		for document_key in SceneManager.documents:
+			create_document_card(false, SceneManager.documents[document_key].title, SceneManager.documents[document_key].hash)
+		return
+	for document_key in SceneManager.documents:
+		if SceneManager.documents[document_key].title.findn(new_text) != -1:
+			create_document_card(false, SceneManager.documents[document_key].title, SceneManager.documents[document_key].hash)

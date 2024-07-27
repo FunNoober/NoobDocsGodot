@@ -83,31 +83,31 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SavedPopup:position")
+tracks/0/path = NodePath("SavedPopup:size")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 720)]
+"values": [Vector2(1920, 19)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("SavedPopup:size")
+tracks/1/path = NodePath("SavedPopup:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1280, 19)]
+"values": [Vector2(0, 1080)]
 }
 
 [sub_resource type="Animation" id="Animation_6rw2m"]
 resource_name = "popup"
-length = 1.5
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -115,10 +115,10 @@ tracks/0/path = NodePath("SavedPopup:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1, 1.5),
-"transitions": PackedFloat32Array(2, -2, -2, 2),
+"times": PackedFloat32Array(0, 0.5, 1.5, 2),
+"transitions": PackedFloat32Array(-2, -2, -2, -2),
 "update": 0,
-"values": [Vector2(0, 720), Vector2(0, 701), Vector2(0, 701), Vector2(0, 720)]
+"values": [Vector2(0, 1080), Vector2(0, 1061), Vector2(0, 1061), Vector2(0, 1080)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4abu3"]
@@ -249,14 +249,13 @@ h5 = SubResource("Resource_r8r10")
 h6 = SubResource("Resource_6mqfx")
 
 [node name="SavedPopup" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 19)
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 720.0
-offset_right = 1280.0
-offset_bottom = 739.0
+offset_bottom = 19.0
 grow_horizontal = 2
 grow_vertical = 0
 

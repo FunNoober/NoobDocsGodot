@@ -4,14 +4,14 @@
 [ext_resource type="Script" path="res://assets/prefab/document_card.gd" id="2_4ly4b"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2co3v"]
-bg_color = Color(0.1281, 0.1554, 0.21, 1)
+bg_color = Color(0, 0, 0, 0.156863)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
 [node name="document_card_panel" type="Panel"]
-custom_minimum_size = Vector2(0, 39)
+custom_minimum_size = Vector2(0, 45)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -19,6 +19,7 @@ offset_right = -822.0
 offset_bottom = -681.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_2co3v")
 script = ExtResource("2_4ly4b")
 
@@ -29,10 +30,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = 4
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 
 [node name="document_card" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
