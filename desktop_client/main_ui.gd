@@ -9,7 +9,7 @@ func _ready():
 	for document_key in SceneManager.documents:
 		create_document_card(false, SceneManager.documents[document_key].title, SceneManager.documents[document_key].hash)
 	
-	$UiMargain/MainContainer/SearchBar.grab_focus()
+	$UiMargain/MainContainer/CloseElements/SearchBar.grab_focus()
 
 func _on_create_button_pressed():
 	create_document_card(true, "New Document", "")
@@ -45,7 +45,7 @@ func _on_confirm_delete_dialog_confirmed():
 func _on_backup_button_pressed():
 	if FileAccess.file_exists("user://noobdocs.json"):
 		DirAccess.copy_absolute("user://noobdocs.json", "user://backup_" + str(Time.get_unix_time_from_system()) + "_noobdocs.json")
-	
+		$UiMargain/MainContainer/CloseElements/BackupFeedback/AnimationPlayer.play("BackupFeedback")
 
 func _on_delete_databasebutton_pressed():
 	$ConfirmDatabaseDeletion.show_confirmation()

@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=16 format=3 uid="uid://chaavt4sj5lex"]
+[gd_resource type="Theme" load_steps=18 format=3 uid="uid://chaavt4sj5lex"]
 
 [ext_resource type="FontFile" uid="uid://d12xc0xnhx70j" path="res://assets/fonts/Roboto-Regular.ttf" id="1_3laay"]
 [ext_resource type="FontFile" uid="uid://dixvfy7uvdjup" path="res://assets/fonts/Roboto-Bold.ttf" id="1_fcplc"]
@@ -77,6 +77,16 @@ corner_radius_bottom_left = 2
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p4ehb"]
 bg_color = Color(0.109804, 0.129412, 0.172549, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o1vw5"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m6k2s"]
+bg_color = Color(0.458824, 0.25098, 0.74902, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ukde7"]
 bg_color = Color(0.109804, 0.129412, 0.172549, 1)
 border_width_left = 1
@@ -124,6 +134,8 @@ LineEdit/colors/font_color = Color(0.875, 0.875, 0.875, 1)
 LineEdit/styles/focus = SubResource("StyleBoxFlat_62mhy")
 LineEdit/styles/normal = SubResource("StyleBoxFlat_sfc23")
 PopupMenu/styles/panel = SubResource("StyleBoxFlat_p4ehb")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_o1vw5")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_m6k2s")
 RichTextLabel/fonts/bold_font = ExtResource("1_fcplc")
 RichTextLabel/fonts/bold_italics_font = ExtResource("2_sqolg")
 RichTextLabel/fonts/italics_font = ExtResource("3_6lxnv")

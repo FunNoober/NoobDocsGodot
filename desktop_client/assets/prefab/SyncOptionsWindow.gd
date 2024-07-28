@@ -4,6 +4,8 @@ var options = {}
 
 func _ready():
 	load_options()
+	$MarginContainer/PushSuccessfulPopup/AnimationPlayer.play("RESET")
+	$MarginContainer/RemoteSavedPopup/AnimationPlayer.play("RESET")
 
 func load_options():
 	if not FileAccess.file_exists("user://sync_options.json"):
@@ -26,6 +28,7 @@ func _on_save_as_remote_pressed():
 		return
 	file_access.store_line(json_string)
 	file_access.close()
+	$MarginContainer/RemoteSavedPopup/AnimationPlayer.play("ShowPushNotification")
 
 func _on_close_requested():
 	hide()
@@ -50,3 +53,5 @@ func _on_pull_request_request_completed(result, response_code, headers, body):
 
 func _on_push_request_request_completed(result, response_code, headers, body):
 	print(body.get_string_from_utf8())
+	if body.get_string_from_utf8() == "Database received":
+		$MarginContainer/PushSuccessfulPopup/AnimationPlayer.play("ShowPushNotification")
