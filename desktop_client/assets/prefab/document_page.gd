@@ -12,6 +12,7 @@ func _ready():
 	title.text = SceneManager.current_document_title
 	$DocumentMargain/MainContainer/TopBar/TimeOfModification.text = SceneManager.documents[SceneManager.current_document_id].time_of_modification
 	editor.grab_focus()
+	$SavedPopupAnimation.play("RESET")
 
 func _process(delta):
 	if Input.is_action_pressed("modifier") and Input.is_action_just_pressed("s"):
