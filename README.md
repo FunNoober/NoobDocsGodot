@@ -10,6 +10,9 @@ Uses MarkdownLabel by daenvil to display the markdown on the screen. NoobDocs is
 - Editing existing documents
 - Deleting documents
 - Image Support (very finicky/unstable)
+- Syncing to remote server
+- Database backups
+- Search the title of your documents
 
 ## Credits:
 - Roboto (font)
