@@ -1,0 +1,5 @@
+{
+    "security_token": "YOUR_SECURITY_TOKEN",
+    "ip": "127.0.0.1",
+    "port": "8567"
+}
