@@ -1,11 +1,18 @@
-[gd_scene load_steps=19 format=3 uid="uid://cmg5wr6ocap4s"]
+[gd_scene load_steps=26 format=3 uid="uid://cmg5wr6ocap4s"]
 
 [ext_resource type="Theme" uid="uid://chaavt4sj5lex" path="res://assets/themes/main_ui.tres" id="1_76pn1"]
 [ext_resource type="Script" path="res://main_ui.gd" id="2_15v6i"]
 [ext_resource type="Script" path="res://assets/prefab/MargainExpander.gd" id="3_ek45p"]
+[ext_resource type="Texture2D" uid="uid://dwrhwqxwce3ab" path="res://assets/icons/add_circle_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20.png" id="4_2smo7"]
 [ext_resource type="Script" path="res://assets/ConfirmDeleteDialog.gd" id="4_3vxcl"]
+[ext_resource type="Texture2D" uid="uid://7r67r3ern1fl" path="res://assets/icons/folder_copy_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20.png" id="4_rik15"]
+[ext_resource type="Texture2D" uid="uid://coortee03c24r" path="res://assets/icons/search_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20.png" id="4_u7g62"]
 [ext_resource type="Script" path="res://assets/prefab/ConfirmDatabaseDeletion.gd" id="5_6n0d6"]
+[ext_resource type="Texture2D" uid="uid://bj4geehjr5sxl" path="res://assets/icons/folder_delete_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20.png" id="5_c5p75"]
 [ext_resource type="Script" path="res://assets/prefab/SyncOptionsWindow.gd" id="6_qbbq2"]
+[ext_resource type="Texture2D" uid="uid://blgms6tib5yal" path="res://assets/icons/cloud_download_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20.png" id="7_rpqvy"]
+[ext_resource type="Texture2D" uid="uid://crlm408qgh2wy" path="res://assets/icons/sync_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20.png" id="8_i2now"]
+[ext_resource type="Texture2D" uid="uid://bh0gfoeajt3ei" path="res://assets/icons/cloud_upload_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20.png" id="8_nxc8m"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yx68k"]
 font_size = 36
@@ -96,22 +103,6 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="Animation" id="Animation_pq2o6"]
-resource_name = "ShowPushNotification"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.7, 1.3, 2),
-"transitions": PackedFloat32Array(-2, -2, -2, -2),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_5iwf7"]
 length = 0.001
 loop_mode = 1
@@ -126,6 +117,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_pq2o6"]
+resource_name = "ShowPushNotification"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7, 1.3, 2),
+"transitions": PackedFloat32Array(-2, -2, -2, -2),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vbk5u"]
@@ -172,16 +179,22 @@ label_settings = SubResource("LabelSettings_yx68k")
 
 [node name="CreateButton" type="Button" parent="UiMargain/MainContainer/TopBar"]
 layout_mode = 2
+theme_override_constants/icon_max_width = 16
 text = "New"
+icon = ExtResource("4_2smo7")
 
 [node name="BackupButton" type="Button" parent="UiMargain/MainContainer/TopBar"]
 layout_mode = 2
+theme_override_constants/icon_max_width = 16
 shortcut = SubResource("Shortcut_37tyo")
 text = "Backup"
+icon = ExtResource("4_rik15")
 
 [node name="DeleteDatabasebutton" type="Button" parent="UiMargain/MainContainer/TopBar"]
 layout_mode = 2
+theme_override_constants/icon_max_width = 18
 text = "Delete Database"
+icon = ExtResource("5_c5p75")
 
 [node name="CloseElements" type="VBoxContainer" parent="UiMargain/MainContainer"]
 layout_mode = 2
@@ -189,6 +202,7 @@ layout_mode = 2
 [node name="SearchBar" type="LineEdit" parent="UiMargain/MainContainer/CloseElements"]
 layout_mode = 2
 placeholder_text = "Search"
+right_icon = ExtResource("4_u7g62")
 
 [node name="BackupFeedback" type="ProgressBar" parent="UiMargain/MainContainer/CloseElements"]
 custom_minimum_size = Vector2(0, 5)
@@ -212,10 +226,16 @@ theme_override_constants/h_separation = 8
 theme_override_constants/v_separation = 8
 columns = 4
 
-[node name="SyncOptionsButton" type="Button" parent="UiMargain/MainContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UiMargain/MainContainer"]
 layout_mode = 2
+alignment = 1
+
+[node name="SyncOptionsButton" type="Button" parent="UiMargain/MainContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/icon_max_width = 16
 shortcut = SubResource("Shortcut_tykto")
 text = "Sync Options"
+icon = ExtResource("8_i2now")
 
 [node name="ConfirmDeleteDialog" type="ConfirmationDialog" parent="."]
 initial_position = 1
@@ -311,12 +331,16 @@ layout_mode = 2
 [node name="PullButton" type="Button" parent="SyncOptionsWindow/MarginContainer/Lines/ActionButtons"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/icon_max_width = 36
 text = "Pull"
+icon = ExtResource("7_rpqvy")
 
 [node name="PushButton" type="Button" parent="SyncOptionsWindow/MarginContainer/Lines/ActionButtons"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/icon_max_width = 36
 text = "Push"
+icon = ExtResource("8_nxc8m")
 
 [node name="PushSuccessfulPopup" type="Panel" parent="SyncOptionsWindow/MarginContainer"]
 modulate = Color(1, 1, 1, 0)
@@ -390,7 +414,7 @@ timeout = 2.0
 [connection signal="pressed" from="UiMargain/MainContainer/TopBar/BackupButton" to="." method="_on_backup_button_pressed"]
 [connection signal="pressed" from="UiMargain/MainContainer/TopBar/DeleteDatabasebutton" to="." method="_on_delete_databasebutton_pressed"]
 [connection signal="text_changed" from="UiMargain/MainContainer/CloseElements/SearchBar" to="." method="_on_search_bar_text_changed"]
-[connection signal="pressed" from="UiMargain/MainContainer/SyncOptionsButton" to="." method="_on_sync_options_button_pressed"]
+[connection signal="pressed" from="UiMargain/MainContainer/HBoxContainer/SyncOptionsButton" to="." method="_on_sync_options_button_pressed"]
 [connection signal="confirmed" from="ConfirmDeleteDialog" to="." method="_on_confirm_delete_dialog_confirmed"]
 [connection signal="close_requested" from="ConfirmDatabaseDeletion" to="ConfirmDatabaseDeletion" method="_on_close_requested"]
 [connection signal="pressed" from="ConfirmDatabaseDeletion/DialogMargain/Contents/Buttons/CancelButton" to="ConfirmDatabaseDeletion" method="_on_cancel_button_pressed"]

@@ -1,11 +1,13 @@
-[gd_scene load_steps=21 format=3 uid="uid://bbq5t84qphyk3"]
+[gd_scene load_steps=23 format=3 uid="uid://bbq5t84qphyk3"]
 
 [ext_resource type="Theme" uid="uid://chaavt4sj5lex" path="res://assets/themes/main_ui.tres" id="1_eeuxg"]
 [ext_resource type="Script" path="res://addons/markdownlabel/markdownlabel.gd" id="2_k71dw"]
 [ext_resource type="Script" path="res://assets/prefab/document_page.gd" id="2_kdu7k"]
 [ext_resource type="Script" path="res://assets/prefab/MargainExpander.gd" id="3_bvjxs"]
 [ext_resource type="Script" path="res://addons/markdownlabel/header_formats/h1_format.gd" id="3_t6wkr"]
+[ext_resource type="Texture2D" uid="uid://ou5m5cr3e5i5" path="res://assets/icons/home_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20.png" id="4_hmwqy"]
 [ext_resource type="Script" path="res://addons/markdownlabel/header_formats/h2_format.gd" id="4_wehlw"]
+[ext_resource type="Texture2D" uid="uid://bd4cr3nfenlrc" path="res://assets/icons/save_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20.png" id="5_aficv"]
 [ext_resource type="Script" path="res://addons/markdownlabel/header_formats/h3_format.gd" id="5_du4c6"]
 [ext_resource type="Script" path="res://addons/markdownlabel/header_formats/h4_format.gd" id="6_l0dgv"]
 [ext_resource type="Script" path="res://addons/markdownlabel/header_formats/h5_format.gd" id="7_mmilk"]
@@ -166,7 +168,9 @@ focus_neighbor_right = NodePath("../SaveButton")
 focus_neighbor_bottom = NodePath("../../ViewSwitcher/MenuButton")
 focus_next = NodePath("../DocumentName")
 focus_previous = NodePath("../../EditorScroll/EditorViewer/Editor")
+theme_override_constants/icon_max_width = 16
 text = "Home"
+icon = ExtResource("4_hmwqy")
 
 [node name="DocumentName" type="LineEdit" parent="DocumentMargain/MainContainer/TopBar"]
 layout_mode = 2
@@ -186,7 +190,9 @@ focus_neighbor_right = NodePath("../../ViewSwitcher/MenuButton")
 focus_neighbor_bottom = NodePath("../../ViewSwitcher/MenuButton")
 focus_next = NodePath("../../ViewSwitcher/MenuButton")
 focus_previous = NodePath("../DocumentName")
+theme_override_constants/icon_max_width = 16
 text = "Save"
+icon = ExtResource("5_aficv")
 
 [node name="TimeOfModification" type="Label" parent="DocumentMargain/MainContainer/TopBar"]
 layout_mode = 2
