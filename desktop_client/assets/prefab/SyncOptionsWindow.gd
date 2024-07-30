@@ -45,9 +45,15 @@ func _on_push_button_pressed():
 	$PushRequest.request("http://" + options.remote + "/push", headers, HTTPClient.METHOD_POST, json)
 
 func _on_pull_request_request_completed(result, response_code, headers, body):
+	var popup_label : Label = $MarginContainer/PushSuccessfulPopup/Label
+	var popup_animation : AnimationPlayer = $MarginContainer/PushSuccessfulPopup/AnimationPlayer
 	if str(response_code) == "401":
-		$MarginContainer/PushSuccessfulPopup/Label.text = "Invalid Security Token"
-		$MarginContainer/PushSuccessfulPopup/AnimationPlayer.play("ShowPushNotification")
+		popup_label.text = "Invalid Security Token"
+		popup_animation.play("ShowPushNotification")
+		return
+	if str(response_code) == "500":
+		popup_label.text = "Server Error"
+		popup_animation.play("ShowPushNotification")
 		return
 	var json_string = body.get_string_from_utf8()
 	var json = JSON.new()
@@ -59,10 +65,16 @@ func _on_pull_request_request_completed(result, response_code, headers, body):
 	get_tree().change_scene_to_file("res://main_ui.tscn")
 
 func _on_push_request_request_completed(result, response_code, headers, body):
+	var popup_label : Label = $MarginContainer/PushSuccessfulPopup/Label
+	var popup_animation : AnimationPlayer = $MarginContainer/PushSuccessfulPopup/AnimationPlayer
 	if str(response_code) == "401":
-		$MarginContainer/PushSuccessfulPopup/Label.text = "Invalid Security Token"
-		$MarginContainer/PushSuccessfulPopup/AnimationPlayer.play("ShowPushNotification")
+		popup_label.text = "Invalid Security Token"
+		popup_animation.play("ShowPushNotification")
 		return
-	if body.get_string_from_utf8() == "Database received":
-		$MarginContainer/PushSuccessfulPopup/Label.text = "Push Successful"
-		$MarginContainer/PushSuccessfulPopup/AnimationPlayer.play("ShowPushNotification")
+	if str(response_code) == "500":
+		popup_label.text = "Server Error"
+		popup_animation.play("ShowPushNotification")
+		return
+	if str(response_code) == "200":
+		popup_label.text = "Push Successful"
+		popup_animation.play("ShowPushNotification")

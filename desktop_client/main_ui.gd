@@ -4,12 +4,14 @@ extends Control
 @onready var contents : Control = $UiMargain/MainContainer/ContentsScroll/Contents
 @onready var confirm_delete_dialog : ConfirmDeleteDialog = $ConfirmDeleteDialog
 
+var current_search_type : int = 0
+
 func _ready():
 	SceneManager.load_save()
 	for document_key in SceneManager.documents:
 		create_document_card(false, SceneManager.documents[document_key].title, SceneManager.documents[document_key].hash)
 	
-	$UiMargain/MainContainer/CloseElements/SearchBar.grab_focus()
+	$UiMargain/MainContainer/CloseElements/SearchArea/SearchBar.grab_focus()
 
 func _on_create_button_pressed():
 	create_document_card(true, "New Document", "")
@@ -58,8 +60,19 @@ func _on_search_bar_text_changed(new_text):
 			create_document_card(false, SceneManager.documents[document_key].title, SceneManager.documents[document_key].hash)
 		return
 	for document_key in SceneManager.documents:
-		if SceneManager.documents[document_key].title.findn(new_text) != -1:
-			create_document_card(false, SceneManager.documents[document_key].title, SceneManager.documents[document_key].hash)
+		match current_search_type:
+			0:
+				if SceneManager.documents[document_key].title.findn(new_text) != -1:
+					create_document_card(false, SceneManager.documents[document_key].title, SceneManager.documents[document_key].hash)
+			1:
+				if SceneManager.documents[document_key].contents.findn(new_text) != -1:
+					create_document_card(false, SceneManager.documents[document_key].title, SceneManager.documents[document_key].hash)
+			2:
+				if SceneManager.documents[document_key].title.findn(new_text) != -1 or SceneManager.documents[document_key].contents.findn(new_text) != -1:
+					create_document_card(false, SceneManager.documents[document_key].title, SceneManager.documents[document_key].hash)
 
 func _on_sync_options_button_pressed():
 	$SyncOptionsWindow.show()
+
+func _on_search_type_option_item_selected(index):
+	current_search_type = index
