@@ -47,13 +47,14 @@ func _on_push_button_pressed():
 func _on_pull_request_request_completed(result, response_code, headers, body):
 	var popup_label : Label = $MarginContainer/PushSuccessfulPopup/Label
 	var popup_animation : AnimationPlayer = $MarginContainer/PushSuccessfulPopup/AnimationPlayer
+	if str(response_code) == "0":
+		show_popup_animation("Timeout")
+		return
 	if str(response_code) == "401":
-		popup_label.text = "Invalid Security Token"
-		popup_animation.play("ShowPushNotification")
+		show_popup_animation("Invalid Security Token")
 		return
 	if str(response_code) == "500":
-		popup_label.text = "Server Error"
-		popup_animation.play("ShowPushNotification")
+		show_popup_animation("Server Error")
 		return
 	var json_string = body.get_string_from_utf8()
 	var json = JSON.new()
@@ -65,16 +66,20 @@ func _on_pull_request_request_completed(result, response_code, headers, body):
 	get_tree().change_scene_to_file("res://main_ui.tscn")
 
 func _on_push_request_request_completed(result, response_code, headers, body):
-	var popup_label : Label = $MarginContainer/PushSuccessfulPopup/Label
-	var popup_animation : AnimationPlayer = $MarginContainer/PushSuccessfulPopup/AnimationPlayer
+	if str(response_code) == "0":
+		show_popup_animation("Timeout")
+		return
 	if str(response_code) == "401":
-		popup_label.text = "Invalid Security Token"
-		popup_animation.play("ShowPushNotification")
+		show_popup_animation("Invalid Security Token")
 		return
 	if str(response_code) == "500":
-		popup_label.text = "Server Error"
-		popup_animation.play("ShowPushNotification")
+		show_popup_animation("Server Error")
 		return
 	if str(response_code) == "200":
-		popup_label.text = "Push Successful"
-		popup_animation.play("ShowPushNotification")
+		show_popup_animation("Push Successful")
+
+func show_popup_animation(contents : String):
+	var popup_label : Label = $MarginContainer/PushSuccessfulPopup/Label
+	var popup_animation : AnimationPlayer = $MarginContainer/PushSuccessfulPopup/AnimationPlayer
+	popup_label.text = contents
+	popup_animation.play("ShowPushNotification")
