@@ -65,7 +65,7 @@ func main() {
 		defer file.Close()
 		file.WriteString(bodyString)
 
-		return c.SendString("Database received")
+		return c.SendStatus(200)
 	})
 
 	err := r.Listen(config.Ip + ":" + config.Port)
