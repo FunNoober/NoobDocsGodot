@@ -44,4 +44,5 @@ The NoobDocs example sync server an example implementation of how to write a syn
 **IMPORTANT NOTE:** \
 The sync server expects to find a file titled `config.json`. If the sync server can not find this file, then it will not launch.
 
-**[Writing your own sync server](CustomSyncServer.md)**
+- **[Writing your own sync server](CustomSyncServer.md)**
+- **[Running the sync server in docker](sync_server/running-in-docker.md)**
