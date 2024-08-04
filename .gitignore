@@ -3,3 +3,5 @@
 noobsdoc.ini
 noobdocs.json
 *_noobdocs.json
+sync_server/documents
+sync_server/metadata.json
