@@ -92,6 +92,39 @@ func main() {
 
 		return c.SendStatus(200)
 	})
+	r.Get("/versions", func(c *fiber.Ctx) error {
+		if c.Get("Security-Token") != config.SecurityToken {
+			return c.SendStatus(401)
+		}
+
+		return c.JSON(fiber.Map{
+			"versions": metadata.ListOfPushes,
+		})
+	})
+	r.Get("/pullversion/:version", func(c *fiber.Ctx) error {
+		if c.Get("Security-Token") != config.SecurityToken {
+			return c.SendStatus(401)
+		}
+
+		var version = c.Params("version")
+
+		content, fileErr := os.ReadFile("./documents/" + version + "_noobdocs.json")
+		var objmap map[string]Documents
+		if fileErr != nil {
+			fmt.Println(fileErr)
+			return c.SendStatus(500)
+		}
+
+		marshalErr := json.Unmarshal(content, &objmap)
+		if marshalErr != nil {
+			fmt.Println(marshalErr)
+			return c.SendStatus(500)
+		}
+
+		return c.JSON(fiber.Map{
+			"documents": objmap,
+		})
+	})
 
 	err := r.Listen(config.Ip + ":" + config.Port)
 	fmt.Println(err)
