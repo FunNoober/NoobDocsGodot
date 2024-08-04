@@ -20,45 +20,44 @@ corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
-[sub_resource type="Resource" id="Resource_6v724"]
-resource_local_to_scene = true
+[sub_resource type="Resource" id="Resource_pr31x"]
 script = ExtResource("3_t6wkr")
 font_size = 2.285
-is_bold = false
+is_bold = true
 is_italic = false
 is_underlined = false
-override_font_color = false
-font_color = Color(1, 1, 1, 1)
+override_font_color = true
+font_color = Color(0.654902, 0.501961, 0.831373, 1)
 
 [sub_resource type="Resource" id="Resource_iq0o3"]
 resource_local_to_scene = true
 script = ExtResource("4_wehlw")
 font_size = 1.714
-is_bold = false
+is_bold = true
 is_italic = false
 is_underlined = false
-override_font_color = false
-font_color = Color(1, 1, 1, 1)
+override_font_color = true
+font_color = Color(0.960784, 0.639216, 0.564706, 1)
 
 [sub_resource type="Resource" id="Resource_ye7cl"]
 resource_local_to_scene = true
 script = ExtResource("5_du4c6")
-font_size = 1.428
+font_size = 1.35
 is_bold = false
 is_italic = false
 is_underlined = false
-override_font_color = false
-font_color = Color(1, 1, 1, 1)
+override_font_color = true
+font_color = Color(0.886275, 0.639216, 0.921569, 1)
 
 [sub_resource type="Resource" id="Resource_roe5p"]
 resource_local_to_scene = true
 script = ExtResource("6_l0dgv")
-font_size = 1.142
+font_size = 1.15
 is_bold = false
 is_italic = false
 is_underlined = false
-override_font_color = false
-font_color = Color(1, 1, 1, 1)
+override_font_color = true
+font_color = Color(0.741176, 0.698039, 0.92549, 1)
 
 [sub_resource type="Resource" id="Resource_r8r10"]
 resource_local_to_scene = true
@@ -68,7 +67,7 @@ is_bold = false
 is_italic = false
 is_underlined = false
 override_font_color = false
-font_color = Color(1, 1, 1, 1)
+font_color = Color(0.854902, 0.831373, 0.760784, 1)
 
 [sub_resource type="Resource" id="Resource_6mqfx"]
 resource_local_to_scene = true
@@ -147,15 +146,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 75
-theme_override_constants/margin_top = 25
-theme_override_constants/margin_right = 75
-theme_override_constants/margin_bottom = 25
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 12
 script = ExtResource("3_bvjxs")
 
 [node name="MainContainer" type="VBoxContainer" parent="DocumentMargain"]
 layout_mode = 2
-theme_override_constants/separation = 5
+theme_override_constants/separation = 6
 
 [node name="TopBar" type="HBoxContainer" parent="DocumentMargain/MainContainer"]
 layout_mode = 2
@@ -228,7 +227,7 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/separation = 10
+theme_override_constants/separation = 16
 
 [node name="Editor" type="TextEdit" parent="DocumentMargain/MainContainer/EditorScroll/EditorViewer"]
 layout_mode = 2
@@ -248,7 +247,7 @@ size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_ct1sf")
 bbcode_enabled = true
 script = ExtResource("2_k71dw")
-h1 = SubResource("Resource_6v724")
+h1 = SubResource("Resource_pr31x")
 h2 = SubResource("Resource_iq0o3")
 h3 = SubResource("Resource_ye7cl")
 h4 = SubResource("Resource_roe5p")
@@ -262,9 +261,7 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 1080.0
-offset_right = 1920.0
-offset_bottom = 1099.0
+offset_bottom = 19.0
 grow_horizontal = 2
 grow_vertical = 0
 

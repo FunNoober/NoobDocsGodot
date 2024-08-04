@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=18 format=3 uid="uid://chaavt4sj5lex"]
+[gd_resource type="Theme" load_steps=19 format=3 uid="uid://chaavt4sj5lex"]
 
 [ext_resource type="FontFile" uid="uid://d12xc0xnhx70j" path="res://assets/fonts/Roboto-Regular.ttf" id="1_3laay"]
 [ext_resource type="FontFile" uid="uid://dixvfy7uvdjup" path="res://assets/fonts/Roboto-Bold.ttf" id="1_fcplc"]
@@ -111,6 +111,13 @@ corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bfxxo"]
+bg_color = Color(0.415686, 0.415686, 0.415686, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r0y6x"]
 bg_color = Color(0.164706, 0.192157, 0.25098, 1)
 corner_radius_top_left = 2
@@ -136,10 +143,13 @@ LineEdit/styles/normal = SubResource("StyleBoxFlat_sfc23")
 PopupMenu/styles/panel = SubResource("StyleBoxFlat_p4ehb")
 ProgressBar/styles/background = SubResource("StyleBoxFlat_o1vw5")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_m6k2s")
+RichTextLabel/constants/line_separation = 8
 RichTextLabel/fonts/bold_font = ExtResource("1_fcplc")
 RichTextLabel/fonts/bold_italics_font = ExtResource("2_sqolg")
 RichTextLabel/fonts/italics_font = ExtResource("3_6lxnv")
 RichTextLabel/fonts/mono_font = ExtResource("4_62uo0")
+TextEdit/constants/line_spacing = 8
 TextEdit/styles/focus = SubResource("StyleBoxFlat_ukde7")
 TextEdit/styles/normal = SubResource("StyleBoxFlat_vaqvt")
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_bfxxo")
 Window/styles/embedded_border = SubResource("StyleBoxFlat_r0y6x")
